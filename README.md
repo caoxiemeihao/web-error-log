@@ -1,2 +1,2 @@
 # web-error-log
-Simple error log system buildding with Koa.
+Simple error log system build with Koa.
