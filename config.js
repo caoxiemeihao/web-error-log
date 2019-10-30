@@ -7,5 +7,5 @@ module.exports = {
     user: 'root',
     password: '',
     database: 'cj_web_log',
-  }
+  },
 };

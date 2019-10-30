@@ -1,18 +1,25 @@
 const Koa = require('koa');
 const serve = require('koa-static');
+const bodyParser = require('koa-body-parser');
 const mysql = require('promise-mysql');
 const config = require('./config');
-const database = require('./mods/__db');
-const router = require('./controller/router');
+const DB = require('./global/__db');
+const router = require('./router');
 
-const app = new Koa();
+; (async () => {
 
-database.db = mysql.createPool(config.database);
+  const app = new Koa();
 
-app.use(serve('./static'));
+  DB.db = await mysql.createPool(config.database);
 
-app.use(router.routes());
+  app.use(serve('./static'));
 
-app.listen(config.server_prot, () => {
-  console.log('[app.js]: server run at', config.server_prot);
-});
+  app.use(bodyParser());
+
+  app.use(router.routes());
+
+  app.listen(config.server_prot, () => {
+    console.log('[app.js]: server run at', config.server_prot);
+  });
+
+})();

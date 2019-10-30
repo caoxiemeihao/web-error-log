@@ -1,13 +1,11 @@
-const { db } = require('../mods/__db');
-const { database: logDB } = require('../config');
+const DB = require('../global/__db');
 
 exports.getLog = async () => {
   return await db.query(`SELECT * FROM cj_web_log ${logDB}`);
 };
 
-exports.setLog = async ({ title, content, access_url, params, type }) => {
-  return await db.query(
-    `INSERT INTO ${logDB}(title, content, create_time, access_url, params, type)
-      VALUES(${title}, ${content}, NOW(), ${access_url}, ${params}, ${type})`
-  );
+exports.setLog = async ({ type, title, content, access_url, params, add_time = Date.now() }) => {
+  const sql = `INSERT INTO err_log(type, title, content, access_url, params, add_time)
+      VALUES('${type}', '${title}', '${content}', '${access_url}', '${params}', '${add_time}')`;
+  return await DB.db.query(sql);
 };
