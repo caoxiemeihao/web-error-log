@@ -2,12 +2,19 @@
   "name": "cj-log",
   "version": "1.0.0",
   "main": "app.js",
+  "scripts": {
+    "start": "pm2 start app.js",
+    "restart": "pm2 restart all",
+    "stop": "pm2 stop all",
+    "delete": "pm2 delete all"
+  },
   "license": "MIT",
   "dependencies": {
     "koa": "^2.11.0",
     "koa-body-parser": "^1.1.2",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
+    "pm2": "^4.1.2",
     "promise-mysql": "^4.1.1"
   }
 }
