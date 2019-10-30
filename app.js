@@ -5,6 +5,7 @@ const mysql = require('promise-mysql');
 const config = require('./config');
 const DB = require('./global/__db');
 const router = require('./router');
+const httpHandle = require('./global/http-handle');
 
 ; (async () => {
 
@@ -16,6 +17,8 @@ const router = require('./router');
   } catch (e) {
     console.log('数据库链接有错\n', e);
   }
+  
+  app.use(httpHandle());
 
   app.use(serve('./static'));
 
