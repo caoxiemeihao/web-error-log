@@ -10,7 +10,12 @@ const router = require('./router');
 
   const app = new Koa();
 
-  DB.db = await mysql.createPool(config.database);
+  try {
+    DB.db = await mysql.createPool(config.database);
+    await DB.db.query('show databases');
+  } catch (e) {
+    console.log('数据库链接有错\n', e);
+  }
 
   app.use(serve('./static'));
 
