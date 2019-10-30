@@ -14,7 +14,7 @@ const vm = new Vue({
         access_url: window.location.href,
         params: 'params1',
       }
-      const res = await window.fetch('http://localhost:4000/api/setLog', {
+      const res = await window.fetch('api/setLog', {
         method: 'post',
         headers: { 'Content-Type': 'application/json;charset=UTF-8' },
         body: JSON.stringify(data),
