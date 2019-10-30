@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50506
 File Encoding         : 65001
 
-Date: 2019-10-30 13:40:02
+Date: 2019-10-30 18:49:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,6 +26,7 @@ CREATE TABLE `err_log` (
   `content` text,
   `access_url` varchar(255) DEFAULT NULL,
   `params` varchar(255) DEFAULT NULL,
-  `add_time` char(13) DEFAULT NULL,
+  `add_time` datetime DEFAULT NULL,
+  `create_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
