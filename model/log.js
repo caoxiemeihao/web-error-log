@@ -15,7 +15,7 @@ exports.setLog = async ({
 }) => {
   let res = null;
   const sql = `INSERT INTO err_log(type, title, content, access_url, params, add_time, create_time)
-      VALUES('${type}', '${title}', '${content}', '${access_url}', '${params}', ${add_time} NOW())`;
+      VALUES('${type}', '${title}', '${content}', '${access_url}', '${params}', ${add_time}, NOW())`;
   try {
     res = await DB.db.query(sql);
   } catch(e) {
